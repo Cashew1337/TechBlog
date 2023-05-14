@@ -1,0 +1,42 @@
+<div class="row mb-4 blog">
+    <div class="col-md-5">
+        <h2>
+            <a href="/blog/{{id}}">{{title}}</a>
+        </h2>
+        <p>
+            {{blog_body}}
+        </p>
+        <p>Created by {{user.name}} on {{date_created}}</p>
+    </div>
+    {{#if comments.length}}
+    <div class="col-md-5 comment list">
+        <h3>Comments</h3>
+
+        {{#each comments as |comment|}}
+        <div class="row mb-2">
+            <div class="col-md-8">
+                <h4>{{comment.title}}</h4>
+                <p>{{comment.comment_body}}</p>
+                <p>Posted by {{user.name}} on {{comment.date_created}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    <div class="col-md-6">
+        <h3>Post a New Comment:</h3>
+
+        <form class="form new-comment-form">
+            <div class="form-group">
+                <label for="comment-body">comment body:</label>
+                <input class="form-input" type="string" id="comment-body" name="comment-body" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Post</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/js/comment.js"></script>
